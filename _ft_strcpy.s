@@ -1,19 +1,18 @@
-global ft_strcpy
+global _ft_strcpy
 section .text
 ;rdi dest
 ;rsi src
-ft_strcpy:
-            mov rcx, 0
+_ft_strcpy:
+            xor rcx, rcx
             cmp rsi, 0
             je error
-            jmp copy
-increment:
+            mov rcx, -1
+loop:
             inc rcx
-copy:
             mov dl, BYTE[rsi + rcx]
             mov BYTE[rdi + rcx], dl
             cmp BYTE[rsi + rcx], 0
-            jne increment
+            jne loop
             jmp return
 return:
             mov rax, rdi

@@ -1,39 +1,35 @@
+
 section .text
-global  ft_strdup
-extern malloc
+global  _ft_strdup
+extern _malloc
 ; rdi src
-ft_strdup:
+_ft_strdup:
             mov r8, 0
             cmp rdi, 0
             je error
-len:
-            mov rcx, 0
-            jmp len_compare
-increment:
+            mov rcx, -1
+len_loop:
             inc rcx
             cmp r8, 1
-            je copy_compare
-len_compare:
             cmp BYTE[rdi + rcx], 0
-            jne increment
+            jne len_loop
 alloc:
             push rdi
             inc rcx
             mov rdi, rcx
-            call malloc
+            call _malloc
             cmp rax, 0
             je error
             pop rdi
 copy:
-            mov rcx, 0
+            mov rcx, -1
             mov r8, 1
-            jmp copy_compare
-
-copy_compare:
+copy_loop:
+            inc rcx
             mov dl, BYTE[rdi + rcx]
             mov BYTE[rax + rcx], dl
             cmp BYTE[rdi + rcx], 0
-            jne increment
+            jne copy_loop
             jmp return
 return:
         ret
