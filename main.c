@@ -8,7 +8,7 @@
 
 size_t ft_strlen(char const *str);
 int		ft_strcmp(char const *s1, char const *s2);
-//char		*ft_strcpy(char *dst, char const *src);
+char		*ft_strcpy(char *dst, char const *src);
 ssize_t		ft_write(int fd, void const *buf, size_t nbyte);
 size_t		ft_read(int fd, void *buf, size_t nbyte);
 char		*ft_strdup(char const *s1);
@@ -19,23 +19,22 @@ char		*ft_strdup(char const *s1);
 # define READ(b, x)			r = ft_read(STDIN_FILENO, buffer, x); printf("`%s`:%ld\n", buffer, r);
 //# define DUP(s)				tmp = ft_strdup(s); printf("`%s` (`%s`)\n", tmp, s); free(tmp); tmp = NULL;
 
-
 int     main()
 {
     int		i;
 	long	r;
 	char	buffer[100];
-	// char	*tmp;
-	// char	*tmp2;
+	char	*tmp;
+	char	*tmp2;
 
 	r = 0;
 	i = 0;
 	while (i < 100)
         buffer[i++] = 0;
 	// printf("%d\n", ft_strlen("test"));
-	// tmp = ft_strdup("");
-	// tmp2 = strdup("");
-	// printf("ft_strdup %s\nor_strdup %s\n", tmp, tmp2);
+	tmp = ft_strdup("test");
+	tmp2 = strdup("test");
+	printf("ft_strdup %s\nor_strdup %s\n", tmp, tmp2);
 	// int fd = open("test.c", O_RDWR);
 	// printf("%d , erron %d\n", (int)ft_write(fd, "\nhello", 6), errno);
 	// printf("%d , erron %d\n", (int)write(fd, "\nhello", 6), errno);
@@ -56,15 +55,20 @@ int     main()
 	// STRCMP("", "toto")
 	// STRCMP("toto", "")
 	// STRCMP("toto", "totobar")
-	char *s1;
-	char *s2;
-	s1 = "\xfe\xff";
-	s2 = "\xfe";
-
-	printf("my %lu   or %lu\n", ft_strlen(s1), strlen(s1));
-	//printf("my %d   or %d\n", ft_strcmp("", "TOTO"), strcmp("", "TOTO"));
+	// char *s1;
+	// char *s2;
+	// s1 = "\xfe\xff";
+	// s2 = "\xfe";
+	char dst[10] = "te";
+	char *s1 = "test";
+	char *src = "hi";
+	// printf("my %lu   or %lu\n", ft_strlen(s1), strlen(s1));
+	//printf("my %d   or %d\n", ft_strncmp("test", "hi"), strcmp("test", "hi"));
 	//printf("my %d   or %d\n", ft_strcmp("", ""), strcmp("", ""));
 	// printf("-done\n");
+	// printf("dst before %s\n", dst);
+	// strcpy("", src);
+	// printf("dst %s\n", dst);
 
     return 0;
 }

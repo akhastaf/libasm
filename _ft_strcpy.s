@@ -1,7 +1,5 @@
 global _ft_strcpy
 section .text
-;rdi dest
-;rsi src
 _ft_strcpy:
             xor rcx, rcx
             cmp rsi, 0
@@ -13,8 +11,6 @@ loop:
             mov BYTE[rdi + rcx], dl
             cmp BYTE[rsi + rcx], 0
             jne loop
-            jmp return
-return:
             mov rax, rdi
             ret
 error:

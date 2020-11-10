@@ -7,6 +7,5 @@ loop:
         inc rax
         cmp BYTE[rdi + rax], 0
         jne loop
-done:
         ret
 
